@@ -95,9 +95,9 @@ function App() {
           symbol,
           name,
           priceUsd,
-          priceGbp: (priceUsd * exchangeRates.GBP).toFixed(2),
-          priceEur: (priceUsd * exchangeRates.EUR).toFixed(2),
-          priceAed: (priceUsd * exchangeRates.AED).toFixed(2)
+          priceGbp: (priceUsd * exchangeRates.GBP),
+          priceEur: (priceUsd * exchangeRates.EUR),
+          priceAed: (priceUsd * exchangeRates.AED)
         };
       });
 

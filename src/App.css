@@ -50,14 +50,14 @@ th:hover {
     text-align: right;
     border-bottom: 1px solid #d6d6d6;
     position: relative;
-    padding-left: 50%;
+    padding-left: 38%;
   }
 
   table td:before {
     content: attr(data-label);
     position: absolute;
     left: 0;
-    width: 45%;
+    width: 30%;
     padding-left: 10px;
     font-weight: bold;
   }
