@@ -10,7 +10,6 @@ function CryptoTable({ columns, data }) {
     headerGroups,
     rows,
     prepareRow,
-    state,
     setSortBy
   } = useTable(
     {
@@ -20,20 +19,24 @@ function CryptoTable({ columns, data }) {
     useSortBy
   );
   const handleSortChange = (e) => {
-    const selectedColumn = e.target.value;
-    const column = columns.find((col) => col.Header === selectedColumn);
+    const [selectedColumn, sortOrder] = e.target.value.split(',');
+    const column = columns.find((col) => col.accessor === selectedColumn);
     if (column) {
-      setSortBy([{ id: column.accessor, desc: state.sortBy[0]?.desc || false }]);
+      setSortBy([{ id: column.accessor, desc: sortOrder === 'desc' }]);
     }
-  };
+  };  
 
   return (
     <div>
       <div className="sorting-controls">
         <label htmlFor="sortSelect">Sort By:</label>
         <select id="sortSelect" onChange={handleSortChange}>
+          <option value="">Sort By:</option>
           {columns.map((column) => (
-            <option key={column.Header}>{column.Header}</option>
+            <optgroup key={column.Header} label={column.Header}>
+              <option value={`${column.accessor},asc`}>{column.Header} (Ascending)</option>
+              <option value={`${column.accessor},desc`}>{column.Header} (Descending)</option>
+            </optgroup>
           ))}
         </select>
       </div>
